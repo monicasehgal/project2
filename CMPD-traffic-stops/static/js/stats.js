@@ -1,3 +1,5 @@
+function renderStats(data) {
+    var $statsDiv = document.getElementById("stats")
 
-var $reasonsDiv = document.getElementById("stats")
-$reasonsDiv.innerHTML="<p>Stats text go here</p>"
+    $statsDiv.innerHTML = "<p>Total count<p><p>"+data+"</p>";
+  }
