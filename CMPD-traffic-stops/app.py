@@ -40,12 +40,10 @@ def fetch_data():
     division = request.args.get('division')
     reason = request.args.get('reason')
     result = request.args.get('result')
-    timechartp= request.args.get('timechartp')
-    chart1p= request.args.get('chart1p')
-    chart1by= request.args.get('chart1by')
-    
 
-    division_query_string = 'db.session.query(trafficStop.CMPD_Division, func.count(trafficStop.CMPD_Division))'
+    
+    print("===============Divisions===============")
+    division_query_string = 'db.session.query(trafficStop.CMPD_Division, func.count())'
     if(reason):
          division_query_string+='.filter(trafficStop.Reason_for_Stop == "'+reason+'")'
     if(result):
@@ -54,8 +52,8 @@ def fetch_data():
     print(division_query_string)
     division_query_results=eval(division_query_string)
 
-
-    reason_query_string = 'db.session.query(trafficStop.Reason_for_Stop, func.count(trafficStop.Reason_for_Stop))'
+    print("===============Reasons===============")
+    reason_query_string = 'db.session.query(trafficStop.Reason_for_Stop, func.count())'
     if(division):
          reason_query_string+='.filter(trafficStop.CMPD_Division == "'+division+'")'
     if(result):
@@ -64,7 +62,8 @@ def fetch_data():
     print(reason_query_string)
     reason_query_results=eval(reason_query_string)
 
-    result_query_string = 'db.session.query(trafficStop.Result_of_Stop, func.count(trafficStop.Result_of_Stop))'
+    print("===============Results===============")
+    result_query_string = 'db.session.query(trafficStop.Result_of_Stop, func.count())'
     if(division):
          result_query_string+='.filter(trafficStop.CMPD_Division == "'+division+'")'
     if(reason):
@@ -73,7 +72,41 @@ def fetch_data():
     print(result_query_string)
     result_query_results=eval(result_query_string)
 
+    print("===============Results===============")
+    result_query_string = 'db.session.query(trafficStop.Result_of_Stop, func.count())'
+    if(division):
+         result_query_string+='.filter(trafficStop.CMPD_Division == "'+division+'")'
+    if(reason):
+        result_query_string+='.filter(trafficStop.Reason_for_Stop == "'+reason+'")'  
+    result_query_string+='.group_by(trafficStop.Result_of_Stop).all()'
+    print(result_query_string)
+    result_query_results=eval(result_query_string)    
 
+    print("===============Count===============")
+    count_query_string = 'db.session.query(func.count(trafficStop.id))'
+    if(division):
+        count_query_string+='.filter(trafficStop.CMPD_Division == "'+division+'")'
+    if(reason):
+        count_query_string+='.filter(trafficStop.Reason_for_Stop == "'+reason+'")'
+    if(result):
+        count_query_string+='.filter(trafficStop.Result_of_Stop == "'+result+'")'
+    count_query_string+='.scalar()'
+    print(count_query_string)
+    count_query_results=eval(count_query_string)  
+
+    return(jsonify({'count': count_query_results,'division_data':division_query_results, 'reason_data': reason_query_results, 'result_data': result_query_results}), 201)
+
+
+
+
+@app.route("/data_timechart", methods=['GET'])
+def fetch_data_timechart():
+    division = request.args.get('division')
+    reason = request.args.get('reason')
+    result = request.args.get('result')
+    timechartp= request.args.get('timechartp')
+    
+    print("===============Time data===============")
     timechart_query_string = 'db.session.query(trafficStop.Month_of_Stop, trafficStop.Driver_Gender, func.count(trafficStop.Driver_Gender))'
     if(division):
          timechart_query_string+='.filter(trafficStop.CMPD_Division == "'+division+'")'
@@ -86,12 +119,33 @@ def fetch_data():
     print(timechart_query_string)
     timechart_query_result=eval(timechart_query_string)
 
-
-    count=110000
-    return(jsonify({'count': count,'division_data':division_query_results, 'reason_data': reason_query_results, 'result_data': result_query_results,'time_data':timechart_query_result}), 201)
-
+    return(jsonify(timechart_query_result), 201)
+    
 
 
+@app.route("/data_chart1", methods=['GET'])
+def fetch_data_chart1():
+    division = request.args.get('division')
+    reason = request.args.get('reason')
+    result = request.args.get('result')
+    param= request.args.get('param')
+    by= request.args.get('by')
+    
+    print("===============Time data===============")
+    query_string = 'db.session.query(trafficStop.Driver_Age, trafficStop.Driver_Gender, func.count(trafficStop.Driver_Gender))'
+    if(division):
+         query_string+='.filter(trafficStop.CMPD_Division == "'+division+'")'
+    if(result):
+         query_string+='.filter(trafficStop.Result_of_Stop == "'+result+'")'
+    if(reason):
+        query_string+='.filter(trafficStop.Reason_for_Stop == "'+reason+'")'       
+
+    query_string+='.group_by(trafficStop.Month_of_Stop, trafficStop.Driver_Gender).all()'
+    print(query_string)
+    query_result=eval(query_string)
+
+    return(jsonify(query_result), 201)
+    
 
 if __name__ == "__main__":
     app.run(debug=True)

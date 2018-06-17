@@ -5,5 +5,38 @@ function renderReasonsChart(data) {
   var data_entries = unpack(data, 0);
   var data_counts = unpack(data, 1);
 
-  $reasonsDiv.innerHTML = "<p>"+String(data_entries).replace(/,/g ,", ")+"</p><p>"+String(data_counts).replace(/,/g ,", ")+"<p>";
+  var trace1 = {
+    x: data_counts,
+    y: data_entries,
+    name: 'Yes',
+    orientation: 'h',
+    marker: {
+      color: 'rgba(55,128,191,0.6)',
+      width: 1
+    },
+    type: 'bar'
+  };
+     
+   
+     
+  var data = [trace1];
+
+
+  var layout = {
+    // autosize: false,
+    // width: 350,
+    height: 300,
+    title: 'Reason for Stop',
+    titlefont: chart_title_style,
+    font: chart_label_style,
+    margin: {
+      l: 100,
+      r: 0,
+      b: 30,
+      t: 30
+    }
+  };
+
+     
+  Plotly.newPlot('reasons_chart', data, layout);
 }
