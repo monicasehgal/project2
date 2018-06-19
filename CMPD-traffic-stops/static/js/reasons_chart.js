@@ -6,10 +6,9 @@ function renderReasonsChart(data) {
   var data_counts = unpack(data, 1);
 
   var trace1 = {
-    x: data_counts,
-    y: data_entries,
+    y: data_counts,
+    x: data_entries,
     name: 'Yes',
-    orientation: 'h',
     marker: {
       color: 'rgba(55,128,191,0.6)',
       width: 1

@@ -9,7 +9,7 @@ function unpack(rows, index) {
 // the function creates a string with current filter parameters to be used in GET requests to JSON API
 function getCurrentFilterParams() {
     var param_string = "";
-    param_string += "?division=" + division_filter + "&reason=" + reason_filter + "&result=" + result_filter;
+    param_string += "?division=" + division_filter + "&reason=" + reason_filter + "&result=" + result_filter+"&year="+year_filter;
     return param_string;
 }
 
@@ -19,6 +19,7 @@ function renderControlCharts() {
         renderDivisionsChart(response.division_data);
         renderReasonsChart(response.reason_data);
         renderResultsChart(response.result_data);
+        renderYearsChart(response.year_data);
         renderStats(response.count);
     });
 }
@@ -26,7 +27,7 @@ function renderControlCharts() {
 // the function renders all charts, will be called on each choice made on control charts (Division, Reason and Result charts)
 function renderAllCharts() {
     renderControlCharts();
-    renderTimeChart();
+ //   renderTimeChart();
     renderChart1();
 }
 
@@ -34,6 +35,7 @@ function renderAllCharts() {
 var division_filter = ""
 var reason_filter = ""
 var result_filter = ""
+var year_filter=""
 
 
 // Charts styling parameters
