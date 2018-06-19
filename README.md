@@ -48,11 +48,11 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Authors
 
-Ivan Vodovozov
-Austin Kegarise
-Aura Johnson
-Rajeev Sharma 
-Monica Sehgal
+Ivan Vodovozov,
+Austin Kegarise,
+Aura Johnson,
+Rajeev Sharma, 
+Monica Sehgal.
 
 
 
