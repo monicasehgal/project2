@@ -7,7 +7,6 @@ function renderResultsChart(data) {
     var trace1 = {
       y: data_counts,
       x: data_entries,
-      name: 'Yes',
       marker: {
         color: 'rgba(55,128,191,0.6)',
         width: 1
@@ -23,7 +22,6 @@ function renderResultsChart(data) {
       // autosize: false,
       // width: 350,
       height: 300,
-      title: 'Result of Stop',
       titlefont: chart_title_style,
       font: chart_label_style,
       margin: {
