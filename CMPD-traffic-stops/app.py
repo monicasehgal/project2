@@ -29,6 +29,9 @@ class trafficStop(db.Model):
 def main():
     return render_template("/index.html")
 
+@app.route('/charlotte-map')
+def charlotte_map():
+    return render_template('/charlotte-division-map.html')
 
 # API - data
 
