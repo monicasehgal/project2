@@ -16,7 +16,8 @@ function getCurrentFilterParams() {
 // the function renders Division, Reason and Result charts
 function renderControlCharts() {
     Plotly.d3.json("/data"+getCurrentFilterParams(), function (error, response) {
-        renderDivisionsChart(response.division_data);
+        // renderDivisionsChart(response.division_data);
+        document.getElementById('mapper').contentWindow.location.reload(true);
         renderReasonsChart(response.reason_data);
         renderResultsChart(response.result_data);
         renderYearsChart(response.year_data);
