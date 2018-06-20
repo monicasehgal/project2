@@ -101,8 +101,8 @@ d3.json(link, function(data) {
 
       }
       
-      d3.json('/data', putDivisionCountInLayer)
-
+      d3.json('/data' + parent.getCurrentFilterParams(), putDivisionCountInLayer)
+      
     }
   }).addTo(map);
 });
