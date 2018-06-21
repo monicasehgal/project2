@@ -19,15 +19,15 @@
         <h1>CMPD Police Traffic Stops Dashboard</h1>
         <hr/>
         <select class="custom-select" onchange="result_filter=this.value;renderAllCharts()">
-            <option selected="selected" value="">Select result</option>
-            <option>Verbal Warning</option>
-            <option>Citation Issued</option>
-          </select>
-          <select class="custom-select" onchange="division_filter=this.value;renderAllCharts()">
-              <option selected="selected" value="">Select division</option>
-              <option>Central Division</option>
-              <option>Eastway Division</option>
-            </select>
+          <option selected="selected" value="">Select result</option>
+          <option>Verbal Warning</option>
+          <option>Citation Issued</option>
+        </select>
+        <select class="custom-select" onchange="division_filter=this.value;renderAllCharts()">
+          <option selected="selected" value="">Select division</option>
+          <option>Central Division</option>
+          <option>Eastway Division</option>
+        </select>
       </div>
     </div>
 
@@ -35,17 +35,20 @@
     <div class="row">
 
       <div class="col-md-4">
+        <h4>Reasons</h4>
         <div id="reasons_chart"></div>
       </div>
       <div class="col-md-3">
-
+        <h4>Results</h4>
         <div id="results_chart"></div>
       </div>
       <div class="col-md-2">
+        <h4>Years</h4>
         <div id="years_chart"></div>
       </div>
 
       <div class="col-md-3">
+        <h4>Count</h4>
         <div id="stats">
         </div>
 
@@ -59,7 +62,7 @@
         <div id="chart1"></div>
       </div>
     </div>
-    
+
   </div>
 
   <p></p>
