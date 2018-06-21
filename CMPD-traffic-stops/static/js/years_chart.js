@@ -18,13 +18,13 @@ function renderYearsChart(data) {
 
 
   var layout = {
-    legend: false,
+    showlegend: false,
    // autosize: false,
    // width: 350,
     //height: 350,
     margin: {
-      l: 0,
-      r: 0,
+      l: 50,
+      r: 50,
       b: 0,
       t: 0
     }

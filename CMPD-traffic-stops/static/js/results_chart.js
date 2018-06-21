@@ -21,14 +21,14 @@ function renderResultsChart(data) {
     var layout = {
       // autosize: false,
       // width: 350,
-      height: 300,
+      height: 200,
       titlefont: chart_title_style,
       font: chart_label_style,
       margin: {
-        l: 100,
+        l: 0,
         r: 0,
-        b: 30,
-        t: 30
+        b: 0,
+        t: 0
       }
     };
        

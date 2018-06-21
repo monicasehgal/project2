@@ -8,6 +8,9 @@ function renderReasonsChart(data) {
   var trace1 = {
     y: data_counts,
     x: data_entries,
+    text: data_entries,
+    textposition: 'outside',
+    hoverinfo: 'none',
     marker: {
       color: 'rgba(55,128,191,0.6)',
       width: 1
@@ -23,14 +26,15 @@ function renderReasonsChart(data) {
   var layout = {
     // autosize: false,
     // width: 350,
-    height: 300,
+    height: 200,
+    textangle: 90,
     titlefont: chart_title_style,
     font: chart_label_style,
     margin: {
-      l: 100,
-      r: 0,
-      b: 30,
-      t: 30
+      l: 50,
+      r: 50,
+      b: 0,
+      t: 0
     }
   };
 

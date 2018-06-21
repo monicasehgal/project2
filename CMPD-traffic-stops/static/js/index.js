@@ -25,6 +25,12 @@ function renderControlCharts() {
     });
 }
 
+// Dataset filter parameters
+var division_filter = ""
+var reason_filter = ""
+var result_filter = ""
+var year_filter=""
+
 // the function renders all charts, will be called on each choice made on control charts (Division, Reason and Result charts)
 function renderAllCharts() {
     renderControlCharts();
@@ -32,11 +38,7 @@ function renderAllCharts() {
     renderChart1();
 }
 
-// Dataset filter parameters
-var division_filter = ""
-var reason_filter = ""
-var result_filter = ""
-var year_filter=""
+
 
 
 // Charts styling parameters
@@ -48,7 +50,7 @@ var chart_title_style = {
 
 var chart_label_style = {
     family: 'Arial, sans-serif',
-    size: 11,
+    size: 12,
     color: 'black'
 }
 
