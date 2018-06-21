@@ -12,7 +12,8 @@ function renderYearsChart(data) {
     type: "pie",
     text: years,
     textinfo: 'label',
-    hoverinfo: 'value+percent'
+    hoverinfo: 'value+percent',
+    showlegend: false
   }];
 
 
