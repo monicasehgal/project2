@@ -1,5 +1,3 @@
-
-
 function renderYearsChart(data) {
 
 
@@ -36,4 +34,8 @@ function renderYearsChart(data) {
   Plotly.newPlot($PIE, data, layout)
 
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> austin
