@@ -135,7 +135,7 @@ def fetch_data_chart1():
     by = request.args.get('by')
 
     print("===============Time data===============")
-    query_string = 'db.session.query(trafficStop.Driver_Age, trafficStop.Driver_Gender, func.count(trafficStop.Driver_Gender))'
+    query_string = 'db.session.query(trafficStop.Driver_Age, trafficStop.Year, func.count(trafficStop.Driver_Gender))'
     if (division):
         query_string += '.filter(trafficStop.CMPD_Division == "' + division + '")'
     if (result):
@@ -143,7 +143,7 @@ def fetch_data_chart1():
     if (reason):
         query_string += '.filter(trafficStop.Reason_for_Stop == "' + reason + '")'
 
-    query_string += '.group_by(trafficStop.Month_of_Stop, trafficStop.Driver_Gender).all()'
+    query_string += '.group_by(trafficStop.Driver_Age, trafficStop.Year).all()'
     print(query_string)
     query_result = eval(query_string)
 
