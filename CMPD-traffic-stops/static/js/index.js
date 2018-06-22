@@ -25,16 +25,16 @@ function renderControlCharts() {
 }
 
 // Dataset filter parameters
-var division_filter = ""
-var reason_filter = ""
-var result_filter = ""
-var year_filter=""
+var division_filter = "";
+var reason_filter = "";
+var result_filter = "";
+var year_filter="";
 var map_shades={};
+var map_counts={};
 
 // the function renders all charts, will be called on each choice made on control charts (Division, Reason and Result charts)
 function renderAllCharts() {
     renderControlCharts();
- //   renderTimeChart();
     renderChart1();
 }
 
@@ -53,5 +53,9 @@ var chart_label_style = {
     size: 12,
     color: 'black'
 }
+
+var control_chart_act='rgba(55,128,191,0.6)';
+var control_chart_inact='rgba(191,191,191,0.6)';
+
 
 renderAllCharts();
