@@ -16,8 +16,7 @@ function getCurrentFilterParams() {
 // the function renders Division, Reason and Result charts
 function renderControlCharts() {
     Plotly.d3.json("/data"+getCurrentFilterParams(), function (error, response) {
-        // renderDivisionsChart(response.division_data);
-        document.getElementById('mapper').contentWindow.location.reload(true);
+        renderDivisionsChart(response.division_data);
         renderReasonsChart(response.reason_data);
         renderResultsChart(response.result_data);
         renderYearsChart(response.year_data);
@@ -30,6 +29,7 @@ var division_filter = ""
 var reason_filter = ""
 var result_filter = ""
 var year_filter=""
+var map_shades={};
 
 // the function renders all charts, will be called on each choice made on control charts (Division, Reason and Result charts)
 function renderAllCharts() {
