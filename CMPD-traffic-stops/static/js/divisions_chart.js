@@ -19,7 +19,10 @@ function renderDivisionsChart(data) {
     map_counts[data_entries[i]] = data_counts[i];
   }
 
-  // redraw the map in the iframe
-  document.getElementById('mapper').contentWindow.location.reload(true);
+  // redraw the layers on the map
+  try{
+  document.getElementById('mapper').contentWindow.renderMap();
+  }
+  catch{console.log('Ignoring the unloaded map exception:')}
 
 }
